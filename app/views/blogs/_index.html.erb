@@ -7,9 +7,8 @@
     <th><%= link_to '削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %><th>
     <% end %>
   </tr>
-  <tr>
-    <td><%= blog.content %></td>
-  </tr>
+  <tr><td><%= blog.content %></td></tr>
+  <tr><td><img src=<%=blog.image%>></td></tr>
   <% end %>
 </table>
 
