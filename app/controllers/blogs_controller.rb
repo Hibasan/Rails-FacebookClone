@@ -5,12 +5,29 @@ class BlogsController < ApplicationController
     @user =User.find(current_user.id)
   end
 
-  def create
-    @blog = current_user.blogs.build(blog_params)
-    @blog.save(blog_params)
-    redirect_to user_path(current_user.id)
+  def confirm
+    @blog = Blog.new(blog_params)
+    p "◆◆@blog_confirm◆◆"
+    p @blog
+    @user =User.find(current_user.id)
+
   end
 
+  def create
+    @blog = current_user.blogs.build(blog_params)
+    p "◆◆@blog_create◆◆"
+    p @blog
+    @user =User.find(current_user.id)
+    if params[:back]
+      render :new
+    else
+      if @blog.save(blog_params)
+        redirect_to user_path(current_user.id),notice:"投稿しました！"
+      else
+        render :new
+      end
+    end
+  end
   def index
     p "◆◆blogs_index◆◆"
     @blogs = Blog.all

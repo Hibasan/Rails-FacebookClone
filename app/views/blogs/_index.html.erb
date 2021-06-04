@@ -1,16 +1,25 @@
-<table class="content">
-  <% @blogs.each do |blog| %>
-  <tr>
-    <th>内容</th>
-    <% if main_user? %>
-    <th><%= link_to "編集", edit_blog_path(blog.id) %><th>
-    <th><%= link_to '削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %><th>
+<div class="content">
+  <table>
+    <% @blogs.each do |blog| %>
+    <tr>
+      <th>内容</th>
+      <% if main_user? %>
+      <th><%= link_to "編集", edit_blog_path(blog.id) %><th>
+      <th><%= link_to '削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %><th>
+      <% end %>
+    </tr>
+    <tr><td><%= blog.content %></td></tr>
+    <tr><td><img src=<%=blog.image%>></td></tr>
     <% end %>
-  </tr>
-  <tr><td><%= blog.content %></td></tr>
-  <tr><td><img src=<%=blog.image%>></td></tr>
-  <% end %>
-</table>
+  </table>
+</div>
 
 <style>
+  .content{
+    width:500px;
+  }
+      
+  .content img{
+    width:100%;
+  }
 </style>
