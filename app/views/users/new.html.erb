@@ -1,0 +1,32 @@
+<div class="">
+  <h1>duxi</h1>
+  <p>duxi(ディクシィ)は「ディクシ！」とパンチを繰り出すことで繋がる
+    （パンチングネットワーキングシステム）です。<br>
+    こちらから「デュクシ！」相手から「デュクシ！」といわば拳で
+    語り合う新しいタイプのコミュニティです。</p>
+    <p>お風呂の国  test01@email.com password</p>
+    <p>アスティル  test02@email.com password</p>
+    <p>かるまる  test03@email.com password</p>
+</div>
+  <%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :名前 %>
+  <%= f.text_field :name %>
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
+  <%= f.label :パスワード（再入力） %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "アカウント登録" %>
+  <%= link_to "ログイン画面", new_session_path %>
+  <% end %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>

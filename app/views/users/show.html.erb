@@ -1,0 +1,9 @@
+<%= render 'header' %>
+
+<div class="main-container">
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+
+<%= render partial: 'blogs/index' %>
+
+</div>

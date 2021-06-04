@@ -1,0 +1,24 @@
+<div class="">
+<h1>duxi</h1>
+<p>duxi(ディクシィ)は「ディクシ！」とパンチを繰り出すことで繋がる
+（パンチングネットワーキングシステム）です。<br>
+こちらから「デュクシ！」相手から「デュクシ！」といわば拳で
+語り合う新しいタイプのコミュニティです。</p>
+<p>お風呂の国  test01@email.com password</p>
+<%= link_to "お風呂の国", user_path(8) %>
+<p>アスティル  test02@email.com password</p>
+<%= link_to "アスティル", user_path(9) %>
+<p>かるまる  test03@email.com password</p>
+<%= link_to "かるまる", user_path(10) %>
+</div>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
+  <%= f.submit "ログイン" %>
+  <%= link_to "新しいアカウントを作成", new_user_path %>
+<% end %>
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
