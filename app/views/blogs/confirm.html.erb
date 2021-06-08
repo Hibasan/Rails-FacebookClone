@@ -1,7 +1,8 @@
 <%= render partial: 'users/header' %>
-<div class="main-container">
+<div class="main_container">
+  <%= render partial: 'users/left' %>
   <h3>以下の内容で、投稿する。</h3>
-<%= form_with(model: @blog, local: true,url: choose_new_or_edit) do |form| %>
+  <%= form_with(model: @blog, local: true,url: choose_new_or_edit) do |form| %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :image %>
   <p>本文:<%= @blog.content %></p>
@@ -9,11 +10,9 @@
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit  "投稿" %>
-<% end %>
-
-<%= form_with(model:@blog,  local:true, url:new_blog_path, method:"get") do |form| %>
+  <% end %>
+  <%= form_with(model:@blog,  local:true, url:new_blog_path, method:"get") do |form| %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "戻る", name: "back" %>
-<% end %>
-
+  <% end %>
 </div>

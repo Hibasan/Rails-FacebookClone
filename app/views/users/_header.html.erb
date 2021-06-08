@@ -1,91 +1,19 @@
 <div class="header">
   <h1>duxi</h1>
-  <h6>duxi(ディクシィ)は「ディクシ！」とパンチを繰り出すことで繋がる
-    （パンチングネットワーキングシステム）です。<br>
-    こちらから 「デュクシ！」相手から「デュクシ！」といわば拳で
-    語り合う新しいタイプのコミュニティです。</h6>
-    <% flash.each do |key, value| %>
+  <div class="header_notice">
+        <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
+      </div>
     <% if logged_in? %>
-    <ul class="top-ul">
-      <li class="top-li"><%= link_to "マイページ", user_path(current_user.id) %></li>
-      <li class="top-li"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+    <ul class="header_ul">
+      <li class="header_li"><%= link_to "マイページ", user_path(current_user.id) %></li>
+      <li class="header_li"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
     </ul>
     <% else %>
-    <ul class="top-ul">
-      <li class="top-li"><%= link_to "アカウント作成", new_user_path %></li>
-      <li class="top-li"><%= link_to "ログイン", new_session_path %></li>
+    <ul class="header_ul">
+      <li class="header_li"><%= link_to "アカウント作成", new_user_path %></li>
+      <li class="header_li"><%= link_to "ログイン画面", new_session_path %></li>
     </ul>
     <% end %>
   </div>
-
-  <div class="left-container">
-    <h2><%= @user.name %></h2>
-    <ul>
-      <li>ホーム</li>
-      <li>レビュー</li>
-      <li>写真</li>
-      <li>動画</li>
-      <li>投稿</li>
-      <li>基本データ</li>
-      <li>コミュニティ</li>
-    </ul>
-    <% if main_user? %>
-    <h2><%= link_to "新規投稿", new_blog_path(current_user.id) %></h2>
-    <% end %>
-    <ul>
-      <li>デバッグ用リンク</li>
-      <li><%= link_to "お風呂の国", user_path(8) %></li>
-      <li><%= link_to "アスティル", user_path(9) %></li>
-      <li><%= link_to "かるまる", user_path(10) %></li>
-    </ul>
-  </div>
-
-  <style>
-    ul{
-      list-style:none;
-    }
-    .header{
-      background-color:#CCFFFF;
-      position:fixed;
-      top: 0;
-      left:0;
-      height:60px;
-      width:100%;
-      border-bottom: 2px solid;
-      padding:10px;
-      z-index: 1;
-    }
-    .header h1{
-      float:left;
-      margin:10px;
-    }
-    .header h6{
-      float:left;
-      margin:10px;
-      padding-top:10px;
-    }
-    .top-ul{
-      padding:0 20px;
-      float:right;
-    }
-    .top-li{
-      padding:0 5px;
-      float:left;
-    }
-    .left-container{
-      background-color:#CCCCCC;
-      margin-top:120px;
-      float:left;
-      width:200px;
-    }
-    .left-container h2{
-      text-align:center;
-    }
-    .main-container{
-      background-color:#F5F5F5;
-      margin-top:120px;
-      float:left;
-    }
-  </style>
